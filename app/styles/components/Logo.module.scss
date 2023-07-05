@@ -1,0 +1,11 @@
+.logo {
+  @apply text-[#ff385c];
+
+  .mobile_logo {
+    @apply block md:hidden xl:hidden;
+  }
+
+  .logo_desctop {
+    @apply hidden md:block xl:block
+  }
+}

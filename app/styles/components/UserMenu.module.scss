@@ -1,0 +1,27 @@
+.user_menu {
+  @apply relative;
+
+  .user_menu__container {
+    @apply flex flex-row items-center gap-0 xl:gap-3;
+
+    .user_menu__rent_button {
+      @apply hidden md:block text-sm font-semibold py-3 px-4 rounded-full hover:bg-neutral-100 transition cursor-pointer;
+    }
+
+    .user_menu__profile_button {
+      @apply p-4 md:py-1 md:px-2 sm:py-[0.6rem] border-[1px] border-neutral-200 flex flex-row items-center gap-3 rounded-full cursor-pointer hover:shadow-md transition;
+
+      .profile_icon {
+        @apply hidden flex sm:block md:block xl:block;
+      }
+    }
+  }
+
+  .profile_menu {
+    @apply absolute rounded-xl shadow-md w-[40vw] md:w-3/4 bg-white overflow-hidden right-0 top-12 text-sm;
+
+    .profile_menu__wrapper {
+      @apply flex flex-col cursor-pointer py-2;
+    }
+  }
+}

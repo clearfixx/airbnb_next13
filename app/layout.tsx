@@ -2,6 +2,8 @@ import "./styles/global.scss";
 
 import { Nunito } from "next/font/google";
 
+import Navbar from "./components/navbar/Navbar";
+
 export const metadata = {
   title: "Vacation Homes & Condo Rentals - Airbnb",
   description:
@@ -9,13 +11,18 @@ export const metadata = {
 };
 
 const font = Nunito({
-  subsets: ["latin"],
+  subsets: ["latin", "cyrillic"],
+  weight: ["200", "300", "400", "500", "600", "700", "800", "900", "1000"],
+  style: ["italic", "normal"],
 });
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={font.className}>{children}</body>
+      <body className={font.className}>
+        <Navbar />
+        {children}
+      </body>
     </html>
   );
 };
