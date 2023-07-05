@@ -3,6 +3,9 @@ import "./styles/global.scss";
 import { Nunito } from "next/font/google";
 
 import Navbar from "./components/navbar/Navbar";
+import ClientOnly from "./components/ClientOnly";
+import Modal from "./components/modals/Modal";
+import RegisterModal from "./components/modals/RegisterModal";
 
 export const metadata = {
   title: "Vacation Homes & Condo Rentals - Airbnb",
@@ -20,7 +23,10 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={font.className}>
-        <Navbar />
+        <ClientOnly>
+          <RegisterModal />
+          <Navbar />
+        </ClientOnly>
         {children}
       </body>
     </html>
