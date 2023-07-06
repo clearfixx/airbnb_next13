@@ -1,0 +1,27 @@
+.register_modal__body {
+  @apply flex flex-col gap-4;
+
+  .agreement_policy {
+    @apply w-full text-center text-zinc-500 text-sm;
+
+    .agreement_policy_anchor {
+      @apply text-black underline;
+    }
+  }
+}
+
+.footer__content {
+  @apply flex flex-col gap-4 mt-3;
+
+  .footer__links {
+    @apply text-neutral-500 text-center mt-4 font-light;
+
+    .footer__links_content {
+      @apply flex justify-center items-center gap-2;
+    }
+
+    .login_link {
+      @apply text-neutral-800 cursor-pointer hover:underline
+    }
+  }
+}
