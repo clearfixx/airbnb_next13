@@ -1,3 +1,11 @@
 .categories {
   @apply flex flex-row pt-4 items-center justify-between overflow-x-auto;
 }
+
+.category__box {
+  @apply flex flex-col items-center gap-2 p-3 border-b-2 hover:text-neutral-800 transition cursor-pointer;
+
+  .category__box_label {
+    @apply font-medium text-sm;
+  }
+}
