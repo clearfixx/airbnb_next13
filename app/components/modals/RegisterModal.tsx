@@ -5,6 +5,7 @@ import axios from "axios";
 import { useCallback, useState } from "react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "react-toastify";
+import { signIn } from "next-auth/react";
 
 // Styles import
 import styles from "@/app/styles/components/RegisterModal.module.scss";
@@ -113,13 +114,13 @@ const RegisterModal = () => {
         outline
         label="Continue with Google"
         icon={FcGoogle}
-        onClick={() => {}}
+        onClick={() => signIn("google")}
       />
       <Button
         outline
         label="Continue with Github"
         icon={AiFillGithub}
-        onClick={() => {}}
+        onClick={() => signIn("github")}
       />
       <div className={styles.footer__links}>
         <div className={styles.footer__links_content}>

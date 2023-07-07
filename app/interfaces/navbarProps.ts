@@ -1,5 +1,5 @@
-import { User } from "@prisma/client";
+import { SafeUser } from "../types";
 
 export interface INavbraProps {
-  currentUser?: User | null;
+  currentUser?: SafeUser | null;
 }
