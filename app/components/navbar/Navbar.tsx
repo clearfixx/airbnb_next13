@@ -1,11 +1,17 @@
 "use client";
 
+// Styles
 import styles from "@/app/styles/components/navbar/Navbar.module.scss";
+
+// Interfaces
+import { INavbraProps } from "@/app/interfaces/navbarProps";
+
+// Components
 import Container from "../container/Container";
 import Logo from "../logo/Logo";
 import Search from "../search/Search";
 import UserMenu from "../userMenu/UserMenu";
-import { INavbraProps } from "@/app/interfaces/navbarProps";
+import Categories from "../categories/Categories";
 
 const Navbar: React.FC<INavbraProps> = ({ currentUser }) => {
   return (
@@ -19,6 +25,7 @@ const Navbar: React.FC<INavbraProps> = ({ currentUser }) => {
           </div>
         </Container>
       </div>
+      <Categories />
     </div>
   );
 };
