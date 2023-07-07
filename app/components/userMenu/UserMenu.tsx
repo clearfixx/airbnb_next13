@@ -1,15 +1,29 @@
 "use client";
 
+// Styles
 import styles from "@/app/styles/components/UserMenu.module.scss";
-import RegionButton from "../regionButton/RegionButton";
-import { AiOutlineMenu } from "react-icons/ai";
-import ProfileIcon from "../profileIcon/ProfileIcon";
-import { useCallback, useState } from "react";
-import MenuItem from "../menuItem/MenuItem";
-import useRegisterModal from "@/app/hooks/useRegisterModal";
 
-const UserMenu = () => {
+// Libs
+import { useCallback, useState } from "react";
+import { signOut } from "next-auth/react";
+
+// Hooks
+import useRegisterModal from "@/app/hooks/useRegisterModal";
+import useLoginModal from "@/app/hooks/useLoginModal";
+
+// Interfaces
+import { INavbraProps } from "@/app/interfaces/navbarProps";
+
+// Components
+import { AiOutlineMenu } from "react-icons/ai";
+import RegionButton from "../regionButton/RegionButton";
+import ProfileIcon from "../profileIcon/ProfileIcon";
+import MenuItem from "../menuItem/MenuItem";
+import { toast } from "react-toastify";
+
+const UserMenu: React.FC<INavbraProps> = ({ currentUser }) => {
   const registerModal = useRegisterModal();
+  const loginModal = useLoginModal();
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleOpen = useCallback(() => {
@@ -32,10 +46,38 @@ const UserMenu = () => {
       {isOpen && (
         <div className={styles.profile_menu}>
           <div className={styles.profile_menu__wrapper}>
-            <>
-              <MenuItem onClick={() => {}} label="Login" />
-              <MenuItem onClick={registerModal.onOpen} label="Sign up" />
-            </>
+            {currentUser ? (
+              <>
+                <MenuItem onClick={() => {}} label="Profile" />
+                <MenuItem onClick={() => {}} label="My trips" />
+                <MenuItem onClick={() => {}} label="My favorites" />
+                <MenuItem onClick={() => {}} label="My reservations" />
+                <MenuItem onClick={() => {}} label="My properties" />
+                <MenuItem onClick={() => {}} label="Airbnb my homy" />
+                <div className="w-full h-[1px] my-1 bg-slate-100"></div>
+                <MenuItem
+                  onClick={() => {
+                    toast.success("See you next time!", {
+                      position: "bottom-right",
+                      autoClose: 5000,
+                      hideProgressBar: false,
+                      closeOnClick: true,
+                      pauseOnHover: true,
+                      draggable: true,
+                      progress: undefined,
+                      theme: "light",
+                    });
+                    setTimeout(() => signOut(), 1000);
+                  }}
+                  label="Logout"
+                />
+              </>
+            ) : (
+              <>
+                <MenuItem onClick={loginModal.onOpen} label="Login" />
+                <MenuItem onClick={registerModal.onOpen} label="Sign up" />
+              </>
+            )}
           </div>
         </div>
       )}

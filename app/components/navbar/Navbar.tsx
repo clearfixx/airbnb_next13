@@ -5,8 +5,9 @@ import Container from "../container/Container";
 import Logo from "../logo/Logo";
 import Search from "../search/Search";
 import UserMenu from "../userMenu/UserMenu";
+import { INavbraProps } from "@/app/interfaces/navbarProps";
 
-const Navbar = () => {
+const Navbar: React.FC<INavbraProps> = ({ currentUser }) => {
   return (
     <div className={styles.navbar}>
       <div className={styles.navbar__inner}>
@@ -14,7 +15,7 @@ const Navbar = () => {
           <div className={styles.container_child}>
             <Logo />
             <Search />
-            <UserMenu />
+            <UserMenu currentUser={currentUser} />
           </div>
         </Container>
       </div>
