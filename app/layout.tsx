@@ -8,6 +8,7 @@ import Navbar from "./components/navbar/Navbar";
 import ToasterProvider from "./providers/ToasterProvider";
 import LoginModal from "./components/modals/LoginModal";
 import getCurrentUser from "./actions/getCurrentUser";
+import RentModal from "./components/modals/RentModal";
 
 export const metadata = {
   title: "Vacation Homes & Condo Rentals - Airbnb",
@@ -29,6 +30,7 @@ const RootLayout = async ({ children }: { children: React.ReactNode }) => {
         <ClientOnly>
           <ToasterProvider />
           <RegisterModal />
+          <RentModal />
           <LoginModal />
           <Navbar currentUser={currentUser} />
         </ClientOnly>

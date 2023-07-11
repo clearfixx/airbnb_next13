@@ -1,12 +1,7 @@
 import { create } from "zustand";
+import { IModalRegisterAndLoginProps } from "../interfaces/modalsHooksProps";
 
-interface ILoginModalStore {
-  isOpen: boolean;
-  onOpen: () => void;
-  onClose: () => void;
-}
-
-const useLoginModal = create<ILoginModalStore>((set) => ({
+const useLoginModal = create<IModalRegisterAndLoginProps>((set) => ({
   isOpen: false,
   onOpen: () => set({ isOpen: true }),
   onClose: () => set({ isOpen: false }),

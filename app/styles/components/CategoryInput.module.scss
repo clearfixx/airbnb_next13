@@ -1,0 +1,7 @@
+.__item {
+  @apply rounded-xl border-2 p-4 flex flex-row gap-3 hover:border-black transition cursor-pointer items-center;
+
+  .__label {
+    @apply font-semibold;
+  }
+}

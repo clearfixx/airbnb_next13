@@ -12,6 +12,7 @@ import styles from "@/app/styles/components/RegisterModal.module.scss";
 
 // Custom hooks
 import useRegisterModal from "@/app/hooks/useRegisterModal";
+import useLoginModal from "@/app/hooks/useLoginModal";
 
 // Components imports
 import { AiFillGithub } from "react-icons/ai";
@@ -24,6 +25,7 @@ import Button from "../button/Button";
 
 const RegisterModal = () => {
   const registerModal = useRegisterModal();
+  const loginModal = useLoginModal();
   const [isLoading, setIsLoading] = useState(false);
 
   const {
@@ -61,6 +63,11 @@ const RegisterModal = () => {
       })
       .finally(() => setIsLoading(false));
   };
+
+  const toggle = useCallback(() => {
+    registerModal.onClose();
+    loginModal.onOpen();
+  }, [loginModal, registerModal]);
 
   const bodyContent = (
     <div className={styles.register_modal__body}>
@@ -125,7 +132,7 @@ const RegisterModal = () => {
       <div className={styles.footer__links}>
         <div className={styles.footer__links_content}>
           <div>Already have an account?</div>
-          <div className={styles.login_link} onClick={registerModal.onClose}>
+          <div className={styles.login_link} onClick={toggle}>
             Log in
           </div>
         </div>

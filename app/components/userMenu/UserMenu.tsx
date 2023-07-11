@@ -11,6 +11,7 @@ import { toast } from "react-toastify";
 // Hooks
 import useRegisterModal from "@/app/hooks/useRegisterModal";
 import useLoginModal from "@/app/hooks/useLoginModal";
+import useRentModal from "@/app/hooks/useRentModal";
 
 // Interfaces
 import { INavbraProps } from "@/app/interfaces/navbarProps";
@@ -25,6 +26,7 @@ import Image from "next/image";
 const UserMenu: React.FC<INavbraProps> = ({ currentUser }) => {
   const registerModal = useRegisterModal();
   const loginModal = useLoginModal();
+  const rentModal = useRentModal();
   const [isOpen, setIsOpen] = useState(false);
   const userName = currentUser?.name;
 
@@ -32,10 +34,20 @@ const UserMenu: React.FC<INavbraProps> = ({ currentUser }) => {
     setIsOpen((value) => !value);
   }, []);
 
+  const onRent = useCallback(() => {
+    if (!currentUser) {
+      return loginModal.onOpen();
+    }
+
+    rentModal.onOpen();
+  }, [currentUser, loginModal, rentModal]);
+
   return (
     <div className={styles.user_menu}>
       <div className={styles.user_menu__container}>
-        <div className={styles.user_menu__rent_button}>Airbnb your home</div>
+        <div className={styles.user_menu__rent_button} onClick={onRent}>
+          Airbnb your home
+        </div>
         <RegionButton />
         <div className={styles.user_menu__profile_button} onClick={toggleOpen}>
           <AiOutlineMenu />
@@ -73,7 +85,7 @@ const UserMenu: React.FC<INavbraProps> = ({ currentUser }) => {
                 <MenuItem onClick={() => {}} label="My favorites" />
                 <MenuItem onClick={() => {}} label="My reservations" />
                 <MenuItem onClick={() => {}} label="My properties" />
-                <MenuItem onClick={() => {}} label="Airbnb my homy" />
+                <MenuItem onClick={rentModal.onOpen} label="Airbnb my home" />
                 <div className="w-full h-[1px] my-1 bg-slate-100"></div>
                 <MenuItem
                   onClick={() => {

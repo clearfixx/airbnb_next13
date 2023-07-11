@@ -117,6 +117,11 @@ const LoginModal = () => {
     </div>
   );
 
+  const toggle = useCallback(() => {
+    loginModal.onClose();
+    registerModal.onOpen();
+  }, [loginModal, registerModal]);
+
   const footerContent = (
     <div className={styles.footer__content}>
       <div className="w-full relative bg-neutral-300 h-[1px] text-neutral-500 after:content-['or'] after:absolute after:left-[48%] after:bg-white after:px-5 after:top-[-12px]"></div>
@@ -134,9 +139,9 @@ const LoginModal = () => {
       />
       <div className={styles.footer__links}>
         <div className={styles.footer__links_content}>
-          <div>Already have an account?</div>
-          <div className={styles.login_link} onClick={registerModal.onClose}>
-            Log in
+          <div>First time using Airbnb?</div>
+          <div className={styles.login_link} onClick={toggle}>
+            Create an account
           </div>
         </div>
       </div>
