@@ -26,7 +26,7 @@ const CountrySelect: React.FC<ICountrySelectProps> = ({ value, onChange }) => {
         onChange={(value) => onChange(value as CountrySelectValue)}
         formatOptionLabel={(option: any) => (
           <div className={styles.__option}>
-            <div>{option.flag}</div>
+            <div className={styles.__flag}>{option.flag}</div>
             <div>
               {option.label},
               <span className={styles.__region}>{option.region}</span>
