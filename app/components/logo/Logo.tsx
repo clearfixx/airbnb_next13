@@ -7,8 +7,14 @@ import styles from "../../styles/components/Logo.module.scss";
 
 const Logo = () => {
   const router = useRouter();
+  const homeRef = `/`;
   return (
-    <Link href="/" title="Airbnb" className={styles.logo}>
+    <Link
+      href={homeRef}
+      onClick={() => router.push(homeRef)}
+      title="Airbnb"
+      className={styles.logo}
+    >
       <div className={styles.mobile_logo}>
         <svg width="30" height="32">
           <path
