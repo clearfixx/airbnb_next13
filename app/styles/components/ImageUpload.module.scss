@@ -1,0 +1,11 @@
+._uploads {
+  @apply relative cursor-pointer hover:opacity-70 transition border-dashed border-2 p-20 border-neutral-200 flex flex-col justify-center items-center gap-4 text-neutral-600;
+
+  ._uplods_text {
+    @apply font-semibold text-lg;
+  }
+
+  ._uploaded_photo {
+    @apply absolute inset-0 w-full h-full;
+  }
+}
