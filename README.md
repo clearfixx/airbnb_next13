@@ -8,7 +8,7 @@ This is my simple workthrought for cloning https://www.airbnb.com/
 
 # Running up
 
-Just clone this repo and do this command in your terminal:
+Just clone this repo and run this command in your terminal:
 
     npm install
 
