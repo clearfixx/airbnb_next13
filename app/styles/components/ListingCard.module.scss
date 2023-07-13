@@ -1,0 +1,19 @@
+._item {
+  @apply col-span-1 cursor-pointer;
+
+  ._inner {
+    @apply flex flex-col gap-2 w-full;
+
+    ._image_container {
+      @apply aspect-square w-full relative overflow-hidden rounded-xl;
+
+      ._poster {
+        @apply object-cover h-full w-full transition
+      }
+
+      ._heartbutton {
+        @apply absolute top-3 right-3;
+      }
+    }
+  }
+}
