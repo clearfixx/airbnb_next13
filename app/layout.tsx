@@ -1,4 +1,7 @@
+
+// Styles
 import "./styles/global.scss";
+import styles from "@/app/styles/layout.module.scss";
 
 import { Roboto } from "next/font/google";
 
@@ -34,7 +37,7 @@ const RootLayout = async ({ children }: { children: React.ReactNode }) => {
           <LoginModal />
           <Navbar currentUser={currentUser} />
         </ClientOnly>
-        <div className="pb-20 pt-28">{children}</div>
+        <div className={styles._wrapper}>{children}</div>
       </body>
     </html>
   );

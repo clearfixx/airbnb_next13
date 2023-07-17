@@ -15,6 +15,10 @@ import Image from "next/image";
 import { useCallback, useMemo } from "react";
 import { format } from "date-fns";
 
+// Components
+import HeartButton from "../heartButton/HeartButton";
+import Button from "../button/Button";
+
 const ListingCard: React.FC<IListingCardProps> = ({
   data,
   reservation,
@@ -48,7 +52,7 @@ const ListingCard: React.FC<IListingCardProps> = ({
     return data.price;
   }, [reservation, data.price]);
 
-  const reservationData = useMemo(() => {
+  const reservationDate = useMemo(() => {
     if (!reservation) {
       return null;
     }
@@ -72,8 +76,28 @@ const ListingCard: React.FC<IListingCardProps> = ({
             alt={`Listing`}
             className={`${styles._poster} group-hover:scale-110`}
           />
-          <div className={styles._heartbutton}></div>
+          <div className={styles._heartbutton}>
+            <HeartButton listingId={data.id} currentUser={currentUser} />
+          </div>
         </div>
+        <div className={styles._title}>
+          {location?.region}, {location?.label}
+        </div>
+        <div className={styles._subtitle}>
+          {reservationDate || data.category}
+        </div>
+        <div className={styles._pricecontainer}>
+          <div className={styles.price}>$ {price}</div>
+          {!reservation && <div className="font-light">night</div>}
+        </div>
+        {onAction && actionLabel && (
+          <Button
+            disabled={disabled}
+            small
+            label={actionLabel}
+            onClick={handleCancel}
+          />
+        )}
       </div>
     </div>
   );
